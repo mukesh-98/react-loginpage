@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme)=>({
         padding:'40px 110px',
         backgroundColor:'#ECF0F4',
         [theme.breakpoints.down('sm')]:{
+            padding:'20px 35px',
+        },
+        [theme.breakpoints.down('sm')]:{
             maxWidth:'100%',
             padding:'40px 35px',
             backgroundSize: 'cover',
