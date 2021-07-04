@@ -19,23 +19,39 @@ const useStyles = makeStyles((theme)=>({
         maxWidth:'50%',
         width:'100%',
         float:'left',
-        padding:'40px 110px',
+        padding:'0px 110px',
         backgroundColor:'#ECF0F4',
-        [theme.breakpoints.down('sm')]:{
-            padding:'20px 35px',
+        [theme.breakpoints.down('lg')]:{
+            padding:'0 110px',
+        },
+        [theme.breakpoints.down('md')]:{
+            padding:'0 35px',
         },
         [theme.breakpoints.down('sm')]:{
             maxWidth:'100%',
-            padding:'40px 35px',
+            padding:'0 30px',
             backgroundSize: 'cover',
             backgroundImage:'url(assets/bgr.svg)',
             backgroundBlendMode: 'overlay',
             backgroundColor:'#4424A7',
-        }
+        },
+
+    },
+    boxContent:{
+      display:'flex',
+      justifyContent:'center',
+      alignItems:'center',
+      height:'100vh',
+      flexDirection:'column',
+      width:'100%',
     },
     textHeader:{
+        maxWidth:500,
         width:'100%',
-        margin:'50px 0'
+        margin:'50px 0',
+        [theme.breakpoints.down('lg')]:{
+            margin:'40px 0',
+        },
     },
     logo:{
         height:70,
@@ -43,6 +59,7 @@ const useStyles = makeStyles((theme)=>({
         objectFit:'contain'
     },
     textTitle:{
+        maxWidth:500,
         fontFamily: 'Alegreya',
         fontStyle: 'normal',
         fontWeight: 500,
@@ -53,6 +70,7 @@ const useStyles = makeStyles((theme)=>({
         }
     },
     textSubTitle:{
+        maxWidth:500,
         marginTop:12,
         fontFamily: 'Abel',
         fontStyle: 'normal',
@@ -60,16 +78,24 @@ const useStyles = makeStyles((theme)=>({
         fontSize: 18,
         color: '#868B90',
         [theme.breakpoints.down('sm')]:{
-            color:'white'
+            color:'white',
+            marginTop:6,
         }
     },
     form:{
+        maxWidth:500,
         width:'100%',
         backgroundColor:'white',
         borderRadius: 24,
         padding:'60px 50px',
+        [theme.breakpoints.down('lg')]:{
+            padding:'40px 50px',
+        },
+        [theme.breakpoints.down('md')]:{
+            padding:'20px 50px',
+        },
         [theme.breakpoints.down('sm')]:{
-            padding:'30px 25px',
+            padding:'30px 50px',
         },
         '& > .MuiTypography-root.MuiTypography-body1':{
             marginBottom:12,
@@ -105,6 +131,31 @@ const useStyles = makeStyles((theme)=>({
             display:'none'
         }
     },
+    carouselImage:{
+        height:500 ,
+        width:500 ,
+        objectFit:'contain',
+        [theme.breakpoints.down('lg')]:{
+            height:300 ,
+            width:300 ,
+        },
+    },
+    carouselHeading:{
+        textAlign:'center',
+        color:'white',
+        fontFamily: 'Helvetica',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        fontSize: 24
+    },
+    carouselSubHeading:{
+        fontFamily: 'Helvetica',
+        fontStyle: 'normal',
+        fontWeight: 200,
+        fontSize: 20,
+        textAlign:'center',
+        color:'#B7A9E3'
+    }
 
 }))
 
@@ -113,7 +164,7 @@ function App() {
   return (
     <Box className={classes.container}>
       <Box className={classes.left}>
-          <Box className='d-flex justify-content-center align-items-center flex-column h-100'>
+          <Box className={classes.boxContent}>
               <Box className={classes.logo}>
                   <img src="assets/logo.svg" alt="logo"/>
               </Box>
@@ -156,14 +207,20 @@ function App() {
 
           <Box className='d-flex justify-content-center align-items-center h-100'>
               <OwlCarousel autoplay={true} items={1} dots={true} className='owl-theme px-5'  loop margin={10}  >
-                  <Box className={'item d-flex justify-content-center w-100 float-left'}>
-                      <img src="assets/services.svg" style={{height:500 , width:500 , objectFit:'contain'}} alt="services"/>
+                  <Box className={'item d-flex justify-content-center flex-column w-100 float-left'}>
+                      <img src="assets/services.svg" className={classes.carouselImage} alt="services"/>
+                      <Typography className={classes.carouselHeading}>Service</Typography>
+                      <Typography className={classes.carouselSubHeading}>We provide services, which will help to grow your business</Typography>
                   </Box>
-                  <Box className={'item d-flex justify-content-center w-100 float-left'}>
-                      <img src="assets/support.svg" alt="support" style={{height:500 , width:500 , objectFit:'contain'}}/>
+                  <Box className={'item d-flex justify-content-center flex-column w-100 float-left'}>
+                      <img src="assets/support.svg"  className={classes.carouselImage} alt="support" />
+                      <Typography className={classes.carouselHeading}>Support</Typography>
+                      <Typography className={classes.carouselSubHeading}>We provide Support, 24/7 to solve your problems</Typography>
                   </Box>
-                  <Box className={'item d-flex justify-content-center w-100 float-left'}>
-                      <img src="assets/feature.svg" alt="feature" style={{height:500 , width:500 , objectFit:'contain'}}/>
+                  <Box className={'item d-flex justify-content-center flex-column w-100 float-left'}>
+                      <img src="assets/feature.svg" alt="feature" className={classes.carouselImage}/>
+                      <Typography className={classes.carouselHeading}>Feature</Typography>
+                      <Typography className={classes.carouselSubHeading}>We provide Features, which will help to grab your customer to the shop</Typography>
                   </Box>
               </OwlCarousel>
           </Box>
